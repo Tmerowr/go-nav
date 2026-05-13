@@ -171,7 +171,7 @@ pnpm docker:build
 默认构建 `go-nav:latest`。也可以指定镜像名和标签：
 
 ```bash
-IMAGE_NAME=dengxiwang/go-nav IMAGE_TAG=0.1.0 pnpm docker:build
+IMAGE_NAME=doxwant/go-nav IMAGE_TAG=0.1.0 pnpm docker:build
 ```
 
 #### 推送 Docker Hub
@@ -185,13 +185,13 @@ docker login
 构建并推送多架构镜像：
 
 ```bash
-IMAGE_NAME=dengxiwang/go-nav IMAGE_TAG=0.1.0 pnpm docker:push
+IMAGE_NAME=doxwant/go-nav IMAGE_TAG=0.1.0 pnpm docker:push
 ```
 
 默认会推送：
 
-- `dengxiwang/go-nav:0.1.0`
-- `dengxiwang/go-nav:latest`
+- `doxwant/go-nav:0.1.0`
+- `doxwant/go-nav:latest`
 
 默认平台是 `linux/amd64,linux/arm64`。如只推当前机器架构，可以改用 `pnpm docker:build` 后手动 `docker push`。
 
@@ -209,7 +209,7 @@ docker run -d \
   -e SESSION_SECRET=change-this-to-a-long-random-string \
   -e DATA_DIR=/app/data \
   -v go-nav-data:/app/data \
-  dengxiwang/go-nav:latest
+  doxwant/go-nav:latest
 ```
 
 使用本地数据目录。目录为空时会初始化默认 JSON 和 `uploads/`；目录内已有 `nav.json` / `website.json` / 上传文件时会直接使用用户数据：
@@ -225,7 +225,7 @@ docker run -d \
   -e SESSION_SECRET=change-this-to-a-long-random-string \
   -e DATA_DIR=/app/data \
   -v "$(pwd)/go-nav-data:/app/data" \
-  dengxiwang/go-nav:latest
+  doxwant/go-nav:latest
 ```
 
 如果用户想用 Docker Compose 部署远端镜像，可以创建自己的 `docker-compose.yml`：
@@ -233,7 +233,7 @@ docker run -d \
 ```yaml
 services:
   go-nav:
-    image: dengxiwang/go-nav:latest
+    image: doxwant/go-nav:latest
     restart: unless-stopped
     ports:
       - "3000:3000"
