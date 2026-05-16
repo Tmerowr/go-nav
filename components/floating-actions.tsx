@@ -88,6 +88,15 @@ export const FloatingActions = memo(function FloatingActions({
 		setShowQrPanel((prev) => !prev);
 	}, [supportsHover]);
 
+	const qrPanelOpenClass = showQrPanel
+		? "pointer-events-auto translate-x-0 opacity-100"
+		: "pointer-events-none";
+	const qrPanelHoverClass = supportsHover
+		? "[@media(hover:hover)]:group-hover:pointer-events-auto [@media(hover:hover)]:group-hover:translate-x-0 -mr-2 [@media(hover:hover)]:group-hover:opacity-100"
+		: "";
+	const qrPanelPositionClass =
+		"absolute bottom-0 right-[calc(100%+1.5rem)] z-10 translate-x-2 opacity-0 transition-all duration-200";
+
 	return (
 		<div className="fixed bottom-8 right-6 z-50 flex flex-col items-center gap-3">
 			<Button
@@ -120,15 +129,7 @@ export const FloatingActions = memo(function FloatingActions({
 				<div ref={qrContainerRef} className="group relative flex items-center">
 					<div
 						id="floating-actions-qr-panel"
-						className={`absolute bottom-0 right-12 translate-x-2 opacity-0 transition-all duration-200 ${
-							showQrPanel
-								? "pointer-events-auto translate-x-0 opacity-100"
-								: "pointer-events-none"
-						} ${
-							supportsHover
-								? "[@media(hover:hover)]:group-hover:pointer-events-auto [@media(hover:hover)]:group-hover:translate-x-0 [@media(hover:hover)]:group-hover:opacity-100"
-								: ""
-						}`}
+						className={`${qrPanelPositionClass} ${qrPanelOpenClass} ${qrPanelHoverClass}`}
 					>
 						<div className="relative w-44 rounded-2xl bg-(--primary-foreground) p-4 text-center shadow-lg">
 							<div className="mx-auto flex h-28 w-28 items-center justify-center rounded-xl bg-default p-2 dark:bg-zinc-700">

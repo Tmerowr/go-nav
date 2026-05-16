@@ -1,6 +1,6 @@
 {
   "name": "go-nav",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "private": true,
   "packageManager": "pnpm@11.1.2",
   "scripts": {
@@ -19,8 +19,8 @@
     "docker:push": "sh scripts/docker-push.sh"
   },
   "dependencies": {
-    "@heroui/react": "^3.0.4",
-    "@heroui/styles": "^3.0.4",
+    "@heroui/react": "^3.0.5",
+    "@heroui/styles": "^3.0.5",
     "@iconify/react": "^6.0.2",
     "babel-plugin-react-compiler": "^1.0.0",
     "fetch-jsonp": "^1.4.0",
