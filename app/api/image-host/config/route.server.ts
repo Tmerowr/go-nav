@@ -1,6 +1,6 @@
-import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 import { requireAdminAuth } from "@/lib/server/api-auth";
+import { revalidateFrontendPaths } from "@/lib/server/revalidate-frontend";
 import {
 	readImageHostConfig,
 	saveImageHostConfigFromInput,
@@ -31,7 +31,7 @@ export async function PUT(req: Request) {
 	}
 	try {
 		const config = saveImageHostConfigFromInput(body);
-		revalidatePath("/");
+		revalidateFrontendPaths();
 		return NextResponse.json(config);
 	} catch (e) {
 		return NextResponse.json({ error: (e as Error).message }, { status: 500 });

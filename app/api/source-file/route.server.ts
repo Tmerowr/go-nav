@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
-import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 import { SESSION_COOKIE, verifySession } from "@/lib/server/auth";
+import { revalidateFrontendPaths } from "@/lib/server/revalidate-frontend";
 import path from "node:path";
 import {
 	getStructuredFileFormat,
@@ -71,7 +71,7 @@ export async function PUT(req: Request) {
 			return NextResponse.json({ error: "配置内容无效" }, { status: 400 });
 		}
 		writeWebsiteData(websiteData);
-		revalidatePath("/");
+		revalidateFrontendPaths();
 		return NextResponse.json({
 			ok: true,
 			websiteData,

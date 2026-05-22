@@ -1,8 +1,8 @@
 import { cookies } from "next/headers";
-import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 import type { NavConfig, WebsiteData } from "@/types";
 import { SESSION_COOKIE, verifySession } from "@/lib/server/auth";
+import { revalidateFrontendPaths } from "@/lib/server/revalidate-frontend";
 import {
 	getConfigRevision,
 	readNav,
@@ -70,7 +70,7 @@ export async function PUT(req: Request) {
 		}
 		if (body.websiteData) writeWebsiteData(body.websiteData);
 		if (body.nav) writeNav(body.nav);
-		revalidatePath("/");
+		revalidateFrontendPaths();
 		const revision = getConfigRevision();
 		const res = NextResponse.json({ ok: true, revision });
 		res.headers.set("ETag", `"${revision}"`);

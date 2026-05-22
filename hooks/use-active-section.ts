@@ -141,6 +141,12 @@ export function useActiveSectionWriter() {
 				initialHashId.length > 0 &&
 				getElements().some((el) => el.id === initialHashId);
 
+			const clearUrlHash = () => {
+				if (!window.location.hash) return;
+				const cleanUrl = `${window.location.pathname}${window.location.search}`;
+				window.history.replaceState(window.history.state, "", cleanUrl);
+			};
+
 			if (hasInitialHashTarget) {
 				setActiveId((prev) => (prev === initialHashId ? prev : initialHashId));
 				// 某些客户端跳转下 hash 定位时机会偏晚，主动补一次定位。
@@ -151,8 +157,12 @@ export function useActiveSectionWriter() {
 				});
 				if (scrollEndTimerRef.current) clearTimeout(scrollEndTimerRef.current);
 				scrollEndTimerRef.current = setTimeout(flushActive, SCROLL_END_DELAY * 2);
+				// 使用 hash 定位完成后，清理 URL 中的 #锚点，避免刷新后持续携带。
+				setTimeout(clearUrlHash, SCROLL_END_DELAY * 2 + 60);
 			} else {
 				findActiveByPosition();
+				// 无效 hash 也清掉，保持地址整洁。
+				if (rawHash) clearUrlHash();
 			}
 		};
 
