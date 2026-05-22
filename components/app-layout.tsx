@@ -1,7 +1,9 @@
 "use client";
+import { BiArrowBack } from "react-icons/bi";
 import { BiLinkExternal } from "react-icons/bi";
-import { useCallback, useEffect, useMemo } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo } from "react";
 import { useState } from "react";
+import { useRef } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { useAtomValue, useSetAtom } from "jotai";
 import { Button, Chip, EmptyState } from "@heroui/react";
@@ -72,10 +74,15 @@ export function AppLayout() {
 	const setActiveId = useSetAtom(activeIdAtom);
 	const [disableRecentVisitsEntrance, setDisableRecentVisitsEntrance] =
 		useState(false);
+	const restoredFromDetailRef = useRef(false);
 
 	const displayCategories = useMemo(() => {
-		if (showSubcategoryTabs) return categories.map((c) => ({ category: c, isChild: false }));
-		const result: Array<{ category: typeof categories[number]; isChild: boolean }> = [];
+		if (showSubcategoryTabs)
+			return categories.map((c) => ({ category: c, isChild: false }));
+		const result: Array<{
+			category: (typeof categories)[number];
+			isChild: boolean;
+		}> = [];
 		for (const cat of categories) {
 			result.push({ category: cat, isChild: false });
 			if (cat.children && cat.children.length > 0) {
@@ -109,7 +116,11 @@ export function AppLayout() {
 	useEffect(() => {
 		if (pathname !== "/") return;
 		const shouldRestore = consumeHomeRestoreRequest();
-		if (!shouldRestore) return;
+		if (!shouldRestore) {
+			restoredFromDetailRef.current = false;
+			return;
+		}
+		restoredFromDetailRef.current = true;
 		setDisableRecentVisitsEntrance(true);
 		const snapshot = readHomeSnapshot();
 		if (!snapshot) return;
@@ -132,6 +143,21 @@ export function AppLayout() {
 			}
 		};
 	}, [pathname, setActiveId]);
+
+	// 首页“刷新”不保留滚动位置：强制回顶并选中首个父级分类。
+	useLayoutEffect(() => {
+		if (pathname !== "/") return;
+		if (restoredFromDetailRef.current) return;
+		const navEntry = performance.getEntriesByType("navigation")[0] as
+			| PerformanceNavigationTiming
+			| undefined;
+		if (navEntry?.type !== "reload") return;
+		window.scrollTo({ top: 0, behavior: "auto" });
+		const firstParentId = categories[0]?.id;
+		if (firstParentId) {
+			setActiveId((prev) => (prev === firstParentId ? prev : firstParentId));
+		}
+	}, [categories, pathname, setActiveId]);
 
 	useEffect(() => {
 		if (pathname !== "/") {
@@ -196,9 +222,7 @@ export function AppLayout() {
 										cardHeight={toPx(layout.cardHeight)}
 										cardGridPadding={toPx(layout.cardGridPadding)}
 										sectionGap={toPx(layout.sectionGap)}
-										disableEntranceAnimation={
-											disableRecentVisitsEntrance
-										}
+										disableEntranceAnimation={disableRecentVisitsEntrance}
 										layout={layout}
 									/>
 								)}
@@ -219,9 +243,7 @@ export function AppLayout() {
 											cardHeight={toPx(layout.cardHeight)}
 											cardGridPadding={toPx(layout.cardGridPadding)}
 											showCategoryTitle={layout.showCategoryTitle}
-											showCategoryDescription={
-												layout.showCategoryDescription
-											}
+											showCategoryDescription={layout.showCategoryDescription}
 											layout={layout}
 										/>
 									))}
@@ -265,20 +287,20 @@ function SiteDetailPage({
 		});
 	}, [layout.autoUseIntranet, layout.linkTarget, site]);
 
-		return (
-			<section className="w-full px-2">
-				<div className="mb-4 flex items-center gap-3">
-					<button
-						type="button"
-						onClick={handleBack}
-						aria-label="返回列表"
-						className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-black/10 bg-white text-base text-zinc-700 transition hover:border-black/20 hover:text-zinc-900 dark:border-white/10 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:border-white/20 dark:hover:text-zinc-100"
-					>
-						←
-					</button>
-					<h2 className="text-lg font-semibold text-zinc-800 dark:text-zinc-200">
-						网址详情
-					</h2>
+	return (
+		<section className="w-full px-2">
+			<div className="mb-4 flex items-center gap-3">
+				<Button
+					isIconOnly
+					variant="tertiary"
+					onClick={handleBack}
+					aria-label="返回首页"
+				>
+					<BiArrowBack />
+				</Button>
+				<h2 className="text-lg font-semibold text-zinc-800 dark:text-zinc-200">
+					网址详情
+				</h2>
 			</div>
 
 			<div className="space-y-4">

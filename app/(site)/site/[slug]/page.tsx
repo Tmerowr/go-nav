@@ -9,8 +9,6 @@ interface SiteDetailRouteProps {
 	params: Promise<{ slug: string }>;
 }
 
-export const dynamicParams = false;
-
 const STATIC_PLACEHOLDER_SLUG = "__placeholder__";
 
 export function generateStaticParams() {

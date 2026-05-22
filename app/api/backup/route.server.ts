@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
-import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 import { SESSION_COOKIE, verifySession } from "@/lib/server/auth";
+import { revalidateFrontendPaths } from "@/lib/server/revalidate-frontend";
 import {
 	createBackupFileName,
 	createDataBackupZip,
@@ -65,7 +65,7 @@ export async function POST(req: Request) {
 
 	try {
 		const restored = restoreDataBackupZip(buf);
-		revalidatePath("/");
+		revalidateFrontendPaths();
 		return NextResponse.json({
 			ok: true,
 			restored,
