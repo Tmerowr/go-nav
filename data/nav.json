@@ -1,5 +1,5 @@
 {
-  "title": "特猫肉児",
+  "title"  “标题”: "特猫肉児",
   "name": "Tmerowr",
   "description": "无所追求，亦无所得",
   "keywords": [
@@ -67,8 +67,8 @@
   "plugins": [],
   "layout": {
     "maxWidth": "1200",
-    "showFooter": false,
-    "showFooterQrCode": false,
+    "showFooter": true,
+    "showFooterQrCode": true,
     "showFloatingQrCode": true,
     "showFloatingActions": true,
     "defaultIconPadding": "8",
