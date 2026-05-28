@@ -72,7 +72,7 @@
     "showFloatingQrCode": true,
     "showFloatingActions": true,
     "defaultIconPadding": "8",
-    "linkTarget": "new"
+    "linkTarget": "new"，
     "cardStyle": "preview"
   },
   "adsAspectRatio": "4/3"
