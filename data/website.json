@@ -2,15 +2,11 @@
   "categories": [
     {
       "id": "6mp702",
-      "name": "精品推荐",
-      "icon": "🔥",
-      "description": "高频使用的中文互联网入口与生活服务，适合作为导航首页的核心收藏",
-      "children": [
+      "name": "North America",
+      "icon": " ",
+      "description": " ",
+      "sites": [
         {
-          "id": "featured-portals",
-          "name": "常用入口",
-          "sites": [
-            {
               "title": "雨云服务器",
               "description": "高性价比，稳定高效，便捷好用！",
               "url": "https://www.rainyun.com/gotab_",
@@ -75,12 +71,6 @@
               "bgColor": "#FF3333",
               "iconPadding": "4"
             }
-          ]
-        },
-        {
-          "id": "featured-life",
-          "name": "生活服务",
-          "sites": [
             {
               "id": "12306",
               "title": "铁路 12306",
@@ -131,9 +121,6 @@
                 "公众号",
                 "小程序",
                 "运营"
-              ]
-            }
-          ]
         }
       ]
     },
