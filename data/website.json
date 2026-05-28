@@ -5,12 +5,8 @@
       "name": "North America",
       "icon": " ",
       "description": " ",
-      "children": [
+      "sites": [
         {
-          "id": "featured-portals",
-          "name": " ",
-          "sites": [
-            {
               "title": "雨云服务器",
               "description": "高性价比，稳定高效，便捷好用！",
               "url": "https://www.rainyun.com/gotab_",
@@ -75,12 +71,6 @@
               "bgColor": "#FF3333",
               "iconPadding": "4"
             }
-          ]
-        },
-        {
-          "id": "featured-life",
-          "name": " ",
-          "sites": [
             {
               "id": "12306",
               "title": "铁路 12306",
@@ -134,8 +124,6 @@
               ]
             }
           ]
-        }
-      ]
     },
     {
       "id": "krfcj1",
