@@ -69,7 +69,7 @@
     "maxWidth": "1200",
     "showFooter": false,
     "showFooterQrCode": false,
-    "showFloatingQrCode": false,
+    "showFloatingQrCode": true,
     "showFloatingActions": true,
     "defaultIconPadding": "8",
     "linkTarget": "new"
