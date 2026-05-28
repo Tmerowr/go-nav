@@ -1,37 +1,37 @@
 {
-  "title": "Go Nav",
-  "name": "Go Nav",
-  "description": "简洁高效的网址导航站",
+  "title": "特猫肉児",
+  "name": "Tmerowr",
+  "description": "无所追求，亦无所得",
   "keywords": [
-    "网址导航站",
-    "导航站",
-    "网址导航",
-    "个人导航"
+    "家具设计",
+    "产品表现",
+    "设计资源",
+    "审美提高"
   ],
   "logo": "/images/logo.svg",
   "favicon": "/favicon.ico",
-  "author": "dengxiwang",
-  "copyright": "版权所有 © 2026 GOTAB. 保留所有权利",
-  "icp": "豫ICP备2023009053号-6",
-  "beian": "豫公网安备41072402001147号",
-  "qrCode": "https://www.gotab.cn/images/wx.webp",
+  "author": "Tmerowr",
+  "copyright": "心如止水·波澜不惊",
+  "icp": "- -",
+  "beian": "- -",
+  "qrCode": "https://res.cloudinary.com/dds3matph/image/upload/v1779959666/%E5%BE%AE%E4%BF%A1_nsbo5x.png",
   "qrCodeText": "微信扫一扫",
   "footerLinks": [
     {
-      "label": "GOTAB 官网",
-      "href": "https://www.gotab.cn"
+      "label": "我的博客",
+      "href": "https://www.temaorou.top"
     },
     {
-      "label": "作者 GitHub",
-      "href": "https://github.com/dengxiwang/go-nav"
+      "label": "我的GitHub",
+      "href": "https://github.com/Tmerowr"
     },
     {
-      "label": " GoTab 新标签页",
-      "href": "https://web.gotab.cn"
+      "label": "我的Ins",
+      "href": "https://www.instagram.com/tmerower"
     },
     {
-      "label": "博客",
-      "href": "https://blog.gotab.cn"
+      "label": "电影日历",
+      "href": "https://www.cikeee.com/wangri"
     }
   ],
   "themeMode": "system",
@@ -63,22 +63,13 @@
       }
     ]
   },
-  "ads": [
-    {
-      "id": "ad-1778577116508",
-      "title": "雨云服务器",
-      "description": "",
-      "image": "https://blog.gotab.cn/upload/rainyun_ad.webp",
-      "url": "https://www.rainyun.com/gotab_",
-      "enabled": true
-    }
-  ],
+  "ads": [],
   "plugins": [],
   "layout": {
-    "maxWidth": "1400",
-    "showFooter": true,
-    "showFooterQrCode": true,
-    "showFloatingQrCode": true,
+    "maxWidth": "1200",
+    "showFooter": false,
+    "showFooterQrCode": false,
+    "showFloatingQrCode": false,
     "showFloatingActions": true,
     "defaultIconPadding": "8",
     "linkTarget": "new"
