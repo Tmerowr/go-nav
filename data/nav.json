@@ -1,6 +1,6 @@
 {
-  "title": "Go Nav",
-  "name": "Go Nav",
+  "title": "特猫肉児",
+  "name": "Tmerowr",
   "description": "简洁高效的网址导航站",
   "keywords": [
     "网址导航站",
@@ -8,30 +8,30 @@
     "网址导航",
     "个人导航"
   ],
-  "logo": "/images/logo.svg",
-  "favicon": "/favicon.ico",
-  "author": "dengxiwang",
-  "copyright": "版权所有 © 2026 GOTAB. 保留所有权利",
+  "logo": "/uploads/m-favicon-1-qncyd8.png",
+  "favicon": "/uploads/m-favicon-1-a67l4o.png",
+  "author": "特猫肉児",
+  "copyright": "版权所有 © 2026 Less is More",
   "icp": "豫ICP备2023009053号-6",
   "beian": "豫公网安备41072402001147号",
-  "qrCode": "https://www.gotab.cn/images/wx.webp",
+  "qrCode": "/uploads/icon-y8ml2d.png",
   "qrCodeText": "微信扫一扫",
   "footerLinks": [
     {
-      "label": "GOTAB 官网",
-      "href": "https://www.gotab.cn"
+      "label": "我的GitHub",
+      "href": "https://github.com/Tmerowr"
     },
     {
-      "label": "作者 GitHub",
-      "href": "https://github.com/dengxiwang/go-nav"
+      "label": "我的Ins",
+      "href": "https://www.instagram.com/tmerowr/"
     },
     {
-      "label": " GoTab 新标签页",
-      "href": "https://web.gotab.cn"
+      "label": "我的Pin",
+      "href": "https://www.pinterest.com/maorouer/"
     },
     {
-      "label": "博客",
-      "href": "https://blog.gotab.cn"
+      "label": "我的Blog",
+      "href": "https://www.temaorou.top/"
     }
   ],
   "themeMode": "system",
@@ -75,13 +75,19 @@
   ],
   "plugins": [],
   "layout": {
-    "maxWidth": "1400",
+    "maxWidth": "2500",
     "showFooter": true,
     "showFooterQrCode": true,
     "showFloatingQrCode": true,
     "showFloatingActions": true,
     "defaultIconPadding": "8",
-    "linkTarget": "new"
+    "linkTarget": "new",
+    "cardStyle": "preview",
+    "cardHeight": "155",
+    "cardMinWidth": "400",
+    "showSidebar": true,
+    "showSearch": false
   },
-  "adsAspectRatio": "4/3"
+  "adsAspectRatio": "4/3",
+  "showAds": false
 }
